@@ -24,6 +24,15 @@ function Repos ({details, loading}) {
                 <label className="label">Stars:</label>
                 <span className="value">{details.stargazers_count}</span>
             </div>
+            <div className="details-row">
+                <label className="label">Issues:</label>
+                <span className="value">{details.open_issues_count}</span>
+            </div>
+            <div className="details-row">
+            <a href={details.clone_url}>
+                  <button>VIEW REPO</button>
+            </a>
+            </div>
         </div>
     )
 }

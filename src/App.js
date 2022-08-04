@@ -32,11 +32,15 @@ function App() {
         url: `https://api.github.com/users/${username}/repos`,
       }).then (res => {
         setLoading(false);
-        setRepos(res.data);
+        if (res.data ==0) {
+          return setError('No repos')
+        } else {
+          return setRepos(res.data);
+        }
       })
         } catch (error) {
           setLoading(false);
-          setError(error);
+          setError('User not found');
         }
   }
 
@@ -70,7 +74,7 @@ function App() {
             <button className='button' onClick={handleSubmit}>{loading ? "Searching..." : "Search"} </button>
           </form>
           <div className='results-container'>
-          {error ? <p > User not found</p> : repos.map(renderRepo)}
+          {error ? <p > {error}</p> : repos.map(renderRepo)}
           </div>
         </div>
         <div className = "right-side">
