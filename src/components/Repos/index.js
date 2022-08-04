@@ -1,4 +1,3 @@
-
 function Repos ({details, loading}) {
     if (loading) {
         return (
